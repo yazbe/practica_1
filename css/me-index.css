@@ -67,11 +67,11 @@ th {
 }
 
 .orange {
-  background-color: rgba(243, 129, 30, 0.2);
+  background-color: rgba(192, 103, 26, 0.9);
 }
 
 .green {
-  background-color: rgba(145, 221, 145, 0.2);
+  background-color: rgba(98, 209, 98, 0.9);
 }
 
 .foot {
@@ -112,6 +112,12 @@ footer {
 
 body {
   margin: 0;
+}
+
+.background{
+  background-image: url("../images/stars.jpg");
+  /*background-repeat: no-repeat;
+  background-position: cover;*/
 }
 
 /*colors*/
