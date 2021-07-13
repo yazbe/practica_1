@@ -1,0 +1,124 @@
+h1 {
+  text-align: center;
+  font-size: 35px;
+  color: rgb(153, 89, 153);
+  margin: 0;
+}
+
+h2 {
+  font-size: 30px;
+  color: rgb(153, 89, 153);
+}
+
+h3 {
+  font-size: 20px;
+  color: rgb(110, 81, 91);
+}
+
+ul {
+  color: rgb(185, 127, 185);
+  list-style-type: none;
+}
+
+form {
+  color: rgb(110, 81, 91);
+}
+
+button {
+  color: rgb(110, 81, 91);
+  background-color: rgb(241, 175, 216);
+  width: 23%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+h3 {
+  color: rgb(153, 89, 153);
+}
+
+input {
+  width: 50%;
+}
+
+.paragraph {
+  font-size: 17px;
+  color: rgb(90, 65, 90);
+}
+
+.align-right {
+  text-align: right;
+}
+.align-justify {
+  text-align: justify;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.orange {
+  background-color: rgba(243, 129, 30, 0.2);
+}
+
+.green {
+  background-color: rgba(145, 221, 145, 0.2);
+}
+
+.foot {
+  position: center;
+  left: 0;
+  bottom: 0;
+}
+
+header {
+  padding: 8px;
+  text-align: center;
+  background-color: rgb(236, 218, 218);
+}
+
+main {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.main-top {
+  margin-top: 4px;
+  padding: 8px;
+  text-align: center;
+  background-color: rgb(236, 218, 218);
+}
+
+footer {
+  margin-top: 8px;
+  padding: 0.5 0;
+  text-align: center;
+  background-color: rgb(236, 218, 218);
+  border: 1px solid rgb(236, 218, 218);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/*colors*/
+.font-white {
+  color: rgba(255, 255, 255, 1);
+}
+
+.font-dark {
+  color: rgb(110, 81, 91);
+}
