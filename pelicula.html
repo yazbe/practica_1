@@ -8,12 +8,28 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/me-index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body class="background2">
+    <div class="kikibuttons">
+        <button onclick="reduceFontSizeBy1px();">
+            <i class="fa fa-chevron-down"></i>
+        </button>
+
+        <button onclick="reset();">
+            <i class="fa fa-refresh"></i>
+        </button>
+
+        <button onclick="increaseFontSizeBy25PerCent();">
+            <i class="fa fa-chevron-up"></i>
+        </button>
+    </div>
+
+
 
     <div class="text-down font-white">
-        <h2>Kiki, la aprendiz de bruja</h2>
+        <h2 id="pelicula-title">Kiki, la aprendiz de bruja</h2>
         <p>Es una película de animación japonesa producida por Studio Ghibli, escrita y
             dirigida por Hayao Miyazaki. La
             historia se encuentra basada en la novela homónima de Eiko Kadono. En esta obra, Miyazaki muestra la
@@ -34,6 +50,33 @@
 
 
     <script src="" async defer></script>
+    <script>
+        function reduceFontSizeBy1px() {
+            txt = document.getElementById('pelicula-title');
+            style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+            currentSize = parseFloat(style);
+            reduction = 1;
+            txt.style.fontSize = (currentSize - reduction) + 'px';
+        }
+
+
+        function reset() {
+            txt = document.getElementById('pelicula-title');
+            style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+            txt.style.fontSize = '30px';
+        }
+
+        function increaseFontSizeBy25PerCent() {
+            txt = document.getElementById('pelicula-title');
+            style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+            currentSize = parseFloat(style);
+            increase = 1.25;
+            txt.style.fontSize = (currentSize * increase) + 'px';
+        }
+
+
+
+    </script>
 </body>
 
 </html>
