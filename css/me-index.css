@@ -44,6 +44,8 @@ button:hover {
 }
 
 
+
+
 h3 {
   color: rgb(153, 89, 153);
 }
@@ -195,5 +197,9 @@ button {
   flex-grow: 1;
 }
 
-
+.mas-pic{
+  display:flex;
+  justify-content: space-around;
+  
+}
  
