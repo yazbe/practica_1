@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html class="pic-background">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mis Tareas</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="mtareas.css">
+</head>
+
+<body>
+
+    <header class="dark-background-color font-white">
+        <div>
+            <h1>Organizador de Tareas</h1>
+        </div>
+
+    </header>
+
+
+    <main>
+        <div class="subtitulo dark-background-color font-white">
+            <h2>To do list</h2>
+            <input id="task_name" type="text" placeholder="Nueva tarea" /><button
+                onclick="addNewTask();">Agregar</button>
+            <button>Borrar</button>
+        </div>
+
+        <ul id="taskList">
+            <li>
+                <span class="content">Comprar comida</span>
+                <span class="close">&#x00D7;</span>
+            </li>
+            <li>
+                <span class="content">Leer un libro</span>
+                <span class="close">&#x00D7;</span>
+            </li>
+        </ul>
+    </main>
+
+
+    <footer class="dark-background-color font-white">
+        <a>Contacta</a>
+        <a>con nosotros</a>
+    </footer>
+
+
+
+    <script src="mtareas.js"></script>
+
+
+
+</body>
+
+</html>

@@ -199,8 +199,10 @@ button {
 
 .mas-pic{
   display:flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-around;
-  
+  flex-direction: row;
 }
 
 /*seguir organizando trabajando flex para mejorar imagen/
