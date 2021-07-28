@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="mtareas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -24,21 +25,12 @@
     <main>
         <div class="subtitulo dark-background-color font-white">
             <h2>To do list</h2>
-            <input id="task_name" type="text" placeholder="Nueva tarea" /><button
-                onclick="addNewTask();">Agregar</button>
-            <button>Borrar</button>
+            <input id="task_name" type="text" placeholder="Nueva tarea" />
+            <button id="addButton">Agregar</button>
+            <button id="removeButton">Borrar</button>
         </div>
 
-        <ul id="taskList">
-            <li>
-                <span class="content">Comprar comida</span>
-                <span class="close">&#x00D7;</span>
-            </li>
-            <li>
-                <span class="content">Leer un libro</span>
-                <span class="close">&#x00D7;</span>
-            </li>
-        </ul>
+        <ul id="taskList"></ul>
     </main>
 
 
