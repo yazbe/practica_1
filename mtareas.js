@@ -1,6 +1,6 @@
 
 document.getElementById("addButton").addEventListener("click", addNewTask);
-document.getElementById("removeButton").addEventListener("click", removeTask);
+document.getElementById("removeButton").addEventListener("click", removeTasks);
 
 let taskList = document.getElementById("taskList");
 let taskId = 0;
@@ -18,11 +18,9 @@ function addNewTask() {
             let taskInputValue = document.getElementById("task_name").value */
             let taskInputValue = taskInput.value
 
-
             let newTask = document.createElement("li");
             taskId = taskId + 1;
             newTask.setAttribute("id", "task-" + taskId);
-
 
             let taskSpan = document.createElement("span");
             taskSpan.setAttribute("class", "content");
@@ -48,12 +46,16 @@ function addNewTask() {
 
 }
 
-function removeTask() {
-    /*
-    1 mostrar dialog para confirmar que quiere borrar todas las tareas
-    2 sustituye el html del elemento por una cadena vacía
-    */
 
-    taskList.innerHTML = "";
+function removeTasks() {
+
+    let areYouSure = confirm("¿Estás seguro de que quieres borrar todas las tareas?");
+
+    if (areYouSure) {
+
+        taskList.innerHTML = "";
+
+    }
+
 }
 
