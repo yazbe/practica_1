@@ -1,4 +1,3 @@
-
 document.getElementById("addButton").addEventListener("click", addNewTask);
 document.getElementById("removeButton").addEventListener("click", removeTasks);
 
@@ -6,8 +5,10 @@ let taskList = document.getElementById("taskList");
 
 let maxNumOfTasks = 5;
 
+//data source
 let taskArray = [];
 
+//task input value is out of blocks to be able to access it in all file
 let taskInput = document.getElementById("task_name");
 /* Esta linea es lo mismo que decir:
 let taskInputValue = document.getElementById("task_name").value */
@@ -15,27 +16,23 @@ let taskInputValue = ""
 
 
 function addNewTaskValueToArray() {
+    taskInputValue = taskInput.value
 
-    taskInputValue = taskInput.value.trim();
-
-    if (!exits(taskInputValue)) {
-        taskArray.push(taskInputValue);
-        paintList();
-    } else {
-        alert("Esta tarea esta repetida")
-    }
-
-
+    taskArray.push(taskInputValue);
+    //console.log(taskArray);
 }
 
 
 function addNewTask() {
 
-    if (taskArray.length < maxNumOfTasks) {
-        let areYouSure = confirm("¿Estás seguro de que quieres agregar una nueva tarea?");
+    let areYouSure = confirm("¿Estás seguro de que quieres agregar una nueva tarea?");
 
+    if (taskArray.length < maxNumOfTasks) {
         if (areYouSure) {
+
             addNewTaskValueToArray();
+
+            paintList();
 
         }
     } else {
@@ -44,22 +41,23 @@ function addNewTask() {
 
 }
 
-
 function paintList() {
-    console.log('creando la lista ......')
+    //empty list to avoid list to paint again old elements
     emptyList();
 
+    //sort list
     taskArray.sort();
 
+    //create list elements
     for (var i = 0; i < taskArray.length; i++) {
         let newTask = createListItem(i, taskArray[i]);
 
         taskList.appendChild(newTask);
 
         taskInput.value = "";
+
     }
 }
-
 
 function createListItem(id, taskInputValue) {
     let newTask = document.createElement("li");
@@ -76,22 +74,25 @@ function createListItem(id, taskInputValue) {
     icon.setAttribute("class", "fa fa-trash-o");
     removeSpan.appendChild(icon);
     newTask.appendChild(removeSpan);
+    //añadimos el evento onClick a cada removeSpan que creamos de manera dinámica
     removeSpan.addEventListener("click", deleteTask);
 
     return newTask;
+
 }
 
-
 function deleteTask() {
+    //this es el elemento sobre el que hemos hecho click, y su id se lo hemos añadido nosotros al
+    //crear el span, en la línea 72
     taskArray.splice(this.id, 1);
     paintList();
+
 }
 
 
 function emptyList() {
     taskList.innerHTML = "";
 }
-
 
 function removeTasks() {
 
@@ -103,15 +104,3 @@ function removeTasks() {
 
 }
 
-function exits(value) {
-    if (taskArray.includes(value)) {
-        return true
-
-
-    } else {
-        return false
-
-
-    }
-
-}
