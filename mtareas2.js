@@ -5,7 +5,7 @@ let taskList = document.getElementById("taskList");
 
 let maxNumOfTasks = 5;
 
-//data source
+//data source 
 let taskArray = [];
 
 //task input value is out of blocks to be able to access it in all file
@@ -18,8 +18,13 @@ let taskInputValue = ""
 function addNewTaskValueToArray() {
     taskInputValue = taskInput.value
 
-    taskArray.push(taskInputValue);
-    //console.log(taskArray);
+    let task = {
+        "completed": false,
+        "name": taskInputValue,
+    }
+
+    taskArray.push(task);
+    console.log(taskArray);
 }
 
 
@@ -45,8 +50,12 @@ function paintList() {
     //empty list to avoid list to paint again old elements
     emptyList();
 
-    //sort list
-    taskArray.sort();
+    //sort list taking in mind that we sort by name
+    //two ways of writing the same (with {} or with =>)
+    //taskArray.sort((a, b) => a.name.localeCompare(b.name);
+    taskArray.sort(function (a, b) {
+        return a.name.localeCompare(b.name)
+    });
 
     //create list elements
     for (var i = 0; i < taskArray.length; i++) {
@@ -59,20 +68,35 @@ function paintList() {
     }
 }
 
-function createListItem(id, taskInputValue) {
+function createListItem(id, task) {
     let newTask = document.createElement("li");
+    newTask.setAttribute("id", id);
 
+    //add span with completed icon button
+    let completedSpan = document.createElement("span");
+    //usamos el id del elemento padre (<li>), ya que representa el index del objeto task enel array
+    //completedSpan.setAttribute("id", "completed-" + id);
+    let completedIcon = document.createElement("i");
+    completedIcon.setAttribute("class", "fa fa-check");
+    completedSpan.appendChild(completedIcon);
+    newTask.appendChild(completedSpan);
+    //añadimos el evento onClick a cada completedSpan que creamos de manera dinámica
+    completedSpan.addEventListener("click", completeTask);
+
+    //add span with task name (previosly taskInputValue)
     let taskSpan = document.createElement("span");
     taskSpan.setAttribute("class", "content");
-    let taskContent = document.createTextNode(taskInputValue);
+    let taskContent = document.createTextNode(task.name);
     taskSpan.appendChild(taskContent);
     newTask.appendChild(taskSpan);
 
+    //add span with remove icon button
     let removeSpan = document.createElement("span");
-    removeSpan.setAttribute("id", id);
-    let icon = document.createElement("i");
-    icon.setAttribute("class", "fa fa-trash-o");
-    removeSpan.appendChild(icon);
+    //usamos el id del elemento padre (<li>), ya que representa el index del objeto task enel array
+    //removeSpan.setAttribute("id", "remove-" + id);
+    let removeIcon = document.createElement("i");
+    removeIcon.setAttribute("class", "fa fa-trash-o");
+    removeSpan.appendChild(removeIcon);
     newTask.appendChild(removeSpan);
     //añadimos el evento onClick a cada removeSpan que creamos de manera dinámica
     removeSpan.addEventListener("click", deleteTask);
@@ -81,10 +105,15 @@ function createListItem(id, taskInputValue) {
 
 }
 
+function completeTask() {
+    console.log("complete task.........");
+}
+
 function deleteTask() {
     //this es el elemento sobre el que hemos hecho click, y su id se lo hemos añadido nosotros al
-    //crear el span, en la línea 72
-    taskArray.splice(this.id, 1);
+    //crear el span, 
+    //necesito acceder al padre de this (<li>), y sacar su id
+    taskArray.splice(this.parentElement.id, 1);
     paintList();
 
 }
