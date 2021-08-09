@@ -20,6 +20,10 @@ ul {
   list-style-type: none;
 }
 
+/*.list-about {
+color:rgb(185, 127, 185)
+}*/
+
 form {
   color: rgb(110, 81, 91);
 }
@@ -42,9 +46,6 @@ button:hover {
   right: 0;
   top: 0;
 }
-
-
-
 
 h3 {
   color: rgb(153, 89, 153);
@@ -96,6 +97,11 @@ header {
   padding: 8px;
   text-align: center;
   background-color: rgb(236, 218, 218);
+}
+
+.about-title {
+  background-color: rgb(236, 218, 218);
+  padding: 10px;
 }
 
 main {
@@ -181,7 +187,7 @@ button {
   
 }
 
-.profile-row {
+/*.profile-row {
   display: flex;
   flex-direction: row;
   justify-content: start; 
