@@ -69,7 +69,12 @@ button {
     background-color: rgb(249, 173, 249);
 }
 
+.button-distribution {
+    display: flex;
+    flex-direction: row ;
+    gap: 8px;
 
+}
 
 button:hover {
     background-color: rgb(195, 100, 254);
