@@ -113,6 +113,11 @@ li {
 
 li .content{
     flex-grow: 1;
+    
+}
+
+.completed {
+    text-decoration: line-through;
 }
 
 h2 {

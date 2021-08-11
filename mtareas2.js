@@ -1,5 +1,8 @@
 document.getElementById("addButton").addEventListener("click", addNewTask);
 document.getElementById("removeButton").addEventListener("click", removeTasks);
+document.getElementById("removeCompetedButton").addEventListener("click", removeCompletedTasks);
+
+
 
 let taskList = document.getElementById("taskList");
 
@@ -16,17 +19,32 @@ let taskInputValue = ""
 
 
 function addNewTaskValueToArray() {
-    taskInputValue = taskInput.value
+    taskInputValue = taskInput.value.trim()
 
-    let task = {
-        "completed": false,
-        "name": taskInputValue,
+    //comprobar si existe
+    if (!exits(taskInputValue)) {
+        let task = {
+            "completed": false,
+            "name": taskInputValue,
+        }
+
+        taskArray.push(task);
+
+        paintList();
+    } else {
+        alert("Esta tarea esta repetida")
     }
-
-    taskArray.push(task);
-    console.log(taskArray);
 }
 
+function exits(value) {
+
+    taskArray.forEach(function (taskItem) {
+        if (taskItem.name == value) {
+            return true;
+        }
+    });
+    return false;
+}
 
 function addNewTask() {
 
@@ -36,8 +54,6 @@ function addNewTask() {
         if (areYouSure) {
 
             addNewTaskValueToArray();
-
-            paintList();
 
         }
     } else {
@@ -85,7 +101,12 @@ function createListItem(id, task) {
 
     //add span with task name (previosly taskInputValue)
     let taskSpan = document.createElement("span");
-    taskSpan.setAttribute("class", "content");
+    //add class completed only if task is completed
+    if (task.completed) {
+        taskSpan.setAttribute("class", "content completed");
+    } else {
+        taskSpan.setAttribute("class", "content");
+    }
     let taskContent = document.createTextNode(task.name);
     taskSpan.appendChild(taskContent);
     newTask.appendChild(taskSpan);
@@ -106,7 +127,19 @@ function createListItem(id, task) {
 }
 
 function completeTask() {
-    console.log("complete task.........");
+
+    //id del padre -> index
+    //crear una copia de la task con el completed al reves
+    let oldTask = taskArray[this.parentElement.id];
+    let oldCompleted = oldTask.completed;
+    oldTask.completed = !oldCompleted;
+
+    //sustituir mi copia por la antigua task
+    taskArray.splice(this.parentElement.id, 1, oldTask);
+
+    //repintar
+    paintList();
+
 }
 
 function deleteTask() {
@@ -118,18 +151,24 @@ function deleteTask() {
 
 }
 
-
-function emptyList() {
-    taskList.innerHTML = "";
-}
-
 function removeTasks() {
 
     let areYouSure = confirm("¿Estás seguro de que quieres borrar todas las tareas?");
 
     if (areYouSure) {
-        emptyList();
+        taskArray = [];
+        paintList();
     }
 
+}
+
+function removeCompletedTasks() {
+    taskArray.forEach(function (task, index) {
+        if (task.completed) {
+            taskArray.splice(index, 1);
+        }
+    });
+
+    paintList();
 }
 

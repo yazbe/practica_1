@@ -106,11 +106,8 @@ function removeTasks() {
 function exits(value) {
     if (taskArray.includes(value)) {
         return true
-
-
     } else {
         return false
-
 
     }
 
