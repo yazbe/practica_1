@@ -92,6 +92,12 @@ function emptyList() {
     taskList.innerHTML = "";
 }
 
+// Esta función hará que el boton borrar todo funcione, porque no solo hay que eliminar la parte de DOM
+// que es lo que haces en la función emtyList sino que hay que eliminar los datos del array
+function removeAllTasks() {
+    taskArray = [];
+}
+
 
 function removeTasks() {
 
@@ -99,6 +105,8 @@ function removeTasks() {
 
     if (areYouSure) {
         emptyList();
+        //Llamada de la función para eliminar los datos del array
+        removeAllTasks();
     }
 
 }
