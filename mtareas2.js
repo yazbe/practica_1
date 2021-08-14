@@ -1,7 +1,7 @@
 document.getElementById("addButton").addEventListener("click", addNewTask);
 document.getElementById("removeButton").addEventListener("click", removeTasks);
 document.getElementById("removeCompetedButton").addEventListener("click", removeCompletedTasks);
-
+document.getElementById("arrangeButton").addEventListener("click", arrangeTasks);
 
 
 let taskList = document.getElementById("taskList");
@@ -62,16 +62,18 @@ function addNewTask() {
 
 }
 
-function paintList() {
+function paintList(sort) {
     //empty list to avoid list to paint again old elements
     eraseList();
 
     //sort list taking in mind that we sort by name
     //two ways of writing the same (with {} or with =>)
     //taskArray.sort((a, b) => a.name.localeCompare(b.name);
-    taskArray.sort(function (a, b) {
-        return a.name.localeCompare(b.name)
-    });
+    if (sort) {
+        taskArray.sort(function (a, b) {
+            return a.name.localeCompare(b.name)
+        });
+    }
 
     //create list elements
     for (var i = 0; i < taskArray.length; i++) {
@@ -175,4 +177,15 @@ function removeCompletedTasks() {
 
 function eraseList() {
     taskList.innerHTML = "";
+}
+
+
+function arrangeTasks() {
+
+    taskArray.sort(function (a, b) {
+        return a.completed - b.completed
+    });
+
+    paintList(false);
+
 }
