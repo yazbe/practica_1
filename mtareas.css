@@ -118,6 +118,9 @@ li .content{
 
 .completed {
     text-decoration: line-through;
+    text-decoration-color: rgb(164, 131, 160);
+    text-decoration-thickness: 4px;
+    
 }
 
 h2 {
