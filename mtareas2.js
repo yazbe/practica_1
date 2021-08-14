@@ -17,6 +17,9 @@ let taskInput = document.getElementById("task_name");
 let taskInputValue = document.getElementById("task_name").value */
 let taskInputValue = ""
 
+//variable to toggle sort by completed order
+let sortByCompletedOrderToggle = true;
+
 
 function addNewTaskValueToArray() {
     taskInputValue = taskInput.value.trim()
@@ -62,7 +65,7 @@ function addNewTask() {
 
 }
 
-function paintList(sort) {
+function paintList(sort = true) {
     //empty list to avoid list to paint again old elements
     eraseList();
 
@@ -181,6 +184,7 @@ function eraseList() {
 
 
 function arrangeTasks() {
+
 
     taskArray.sort(function (a, b) {
         return a.completed - b.completed
