@@ -64,7 +64,7 @@ function addNewTask() {
 
 function paintList() {
     //empty list to avoid list to paint again old elements
-    emptyList();
+    eraseList();
 
     //sort list taking in mind that we sort by name
     //two ways of writing the same (with {} or with =>)
@@ -172,3 +172,7 @@ function removeCompletedTasks() {
     paintList();
 }
 
+
+function eraseList() {
+    taskList.innerHTML = "";
+}
